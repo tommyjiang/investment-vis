@@ -1,0 +1,75 @@
+var datas = [
+  // 分产品
+  [
+    { name: '茅台酒', value: 934.64 },
+    { name: '其他系列酒', value: 125.94 },
+  ],
+  // 分地区
+  [
+    { name: '国内', value: 1034.4 },
+    { name: '国外', value: 26.18 },
+  ],
+  // 分模式
+  [
+    { name: '批发代理', value: 820.29 },
+    { name: '直销', value: 240.29 },
+  ]
+];
+option = {
+  title: {
+    text: '2021 茅台年报营收分类对比',
+    left: 'center',
+    top: 50,
+    textStyle: {
+      color: '#999',
+      fontWeight: 'bold',
+      fontSize: 18,
+    }
+  },
+  series: datas.map(function (data, idx) {
+    var left = idx * 33.3;
+    return {
+      type: 'pie',
+      radius: ['30%', '80%'],
+      left: left + '%',
+      width: 460,  // 这里未设置自适应
+      itemStyle: {
+        borderColor: '#fff',
+        borderWidth: 0,
+      },
+      label: {
+        alignTo: 'edge',
+        formatter: '{name|{b}}\n{value|{c} 亿元}\n{per|{d}%} ',
+        fontSize: 14,
+        fontWeight: 'bold',
+        bold: true,
+        minMargin: 5,
+        edgeDistance: 10,
+        lineHeight: 18,
+        rich: {
+          value: {
+            color: '#999',
+            fontWeight: 'bold',
+          },
+          per: {
+            color: '#999',
+            fontWeight: 'bold',
+          }
+        }
+      },
+      labelLine: {
+        length: 15,
+        length2: 0,
+        maxSurfaceAngle: 80
+      },
+
+      data: data
+    };
+  }),
+  toolbox:{
+    left: 'left',
+    feature: {
+        saveAsImage: {},
+    }
+},
+};

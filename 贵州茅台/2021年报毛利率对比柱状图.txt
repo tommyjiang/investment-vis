@@ -1,0 +1,72 @@
+option = {
+  xAxis: {
+    type: 'category',
+    data: ['茅台酒', '其他系列酒', '国内', '国外', '批发代理', '直销'],
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: '毛利率',
+      nameLocation: 'end',
+      nameTextStyle: {
+          align: 'right',
+          verticalAlign: 'top',
+          padding: [-15, 5, 0, 0],
+    },
+      min: 0,
+      max: 100,
+      interval: 20,
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+  ],
+  label: {
+      show: true,
+      position: 'top',
+      formatter: '{c}%',
+  },
+  series: [
+    {
+      data: [
+        {
+          value: 94.03,
+          itemStyle: {
+            color: '#5470c6'
+          }
+        },
+        {
+          value: 73.69,
+          itemStyle: {
+            color: '#91cc75'
+          }
+        },
+        {
+          value: 91.64,
+          itemStyle: {
+            color: '#fac858'
+          }
+        },
+        {
+          value: 90.77,
+          itemStyle: {
+            color: '#ee6666'
+          }
+        },
+        {
+          value: 90.30,
+          itemStyle: {
+            color: '#73c0de'
+          }
+        },
+        {
+          value: 96.12,
+          itemStyle: {
+            color: '#3ba272'
+          }
+        },
+      ],
+      type: 'bar'
+    }
+  ]
+};

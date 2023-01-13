@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="width: 1500px;height: 600px"></div>
+
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    var datas = [
+  // 分产品
+  [
+    { name: '茅台酒', value: 934.64 },
+    { name: '其他系列酒', value: 125.94 },
+  ],
+  // 分地区
+  [
+    { name: '国内', value: 1034.4 },
+    { name: '国外', value: 26.18 },
+  ],
+  // 分模式
+  [
+    { name: '批发代理', value: 820.29 },
+    { name: '直销', value: 240.29 },
+  ]
+];
+option = {
+  title: {
+    text: '2021 茅台年报营收分类对比',
+    left: 'center',
+    top: 50,
+    textStyle: {
+      color: '#999',
+      fontWeight: 'bold',
+      fontSize: 18,
+    }
+  },
+  series: datas.map(function (data, idx) {
+    var left = idx * 33.3;
+    return {
+      type: 'pie',
+      radius: ['30%', '80%'],
+      left: left + '%',
+      width: 450,
+      itemStyle: {
+        borderColor: '#fff',
+        borderWidth: 0,
+      },
+      label: {
+        alignTo: 'edge',
+        formatter: '{name|{b}}\n{value|{c} 亿元}\n{per|{d}%} ',
+        fontSize: 14,
+        fontWeight: 'bold',
+        bold: true,
+        minMargin: 5,
+        edgeDistance: 10,
+        lineHeight: 18,
+        rich: {
+          value: {
+            color: '#999',
+            fontWeight: 'bold',
+          },
+          per: {
+            color: '#999',
+            fontWeight: 'bold',
+          }
+        }
+      },
+      labelLine: {
+        length: 15,
+        length2: 0,
+        maxSurfaceAngle: 80
+      },
+
+      data: data
+    };
+  }),
+  toolbox:{
+    left: 'left',
+    feature: {
+        saveAsImage: {},
+    }
+},
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+
+  <div id="container2" style="width: 1500px;height: 600px"></div>
+
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById('container2');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    option = {
+      xAxis: {
+        type: 'category',
+        data: ['茅台酒', '其他系列酒', '国内', '国外', '批发代理', '直销'],
+      },
+      yAxis: [
+        {
+          type: 'value',
+          name: '毛利率',
+          nameLocation: 'end',
+          nameTextStyle: {
+              align: 'right',
+              verticalAlign: 'top',
+              padding: [-15, 5, 0, 0],
+        },
+          min: 0,
+          max: 100,
+          interval: 20,
+          axisLabel: {
+            formatter: '{value} %'
+          }
+        },
+      ],
+      label: {
+          show: true,
+          position: 'top',
+          formatter: '{c}%',
+      },
+      series: [
+        {
+          data: [
+            {
+              value: 94.03,
+              itemStyle: {
+                color: '#5470c6'
+              }
+            },
+            {
+              value: 73.69,
+              itemStyle: {
+                color: '#91cc75'
+              }
+            },
+            {
+              value: 91.64,
+              itemStyle: {
+                color: '#fac858'
+              }
+            },
+            {
+              value: 90.77,
+              itemStyle: {
+                color: '#ee6666'
+              }
+            },
+            {
+              value: 90.30,
+              itemStyle: {
+                color: '#73c0de'
+              }
+            },
+            {
+              value: 96.12,
+              itemStyle: {
+                color: '#3ba272'
+              }
+            },
+          ],
+          type: 'bar'
+        }
+      ]
+    };
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+
+</html>
