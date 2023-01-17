@@ -1,4 +1,13 @@
 option = {
+  title: {
+    text: '2021 茅台年报毛利率分类对比',
+    left: 'center',
+    top: 50,
+    textStyle: {
+      color: '#999',
+      fontWeight: 'bold',
+      fontSize: 18,
+    }
   xAxis: {
     type: 'category',
     data: ['茅台酒', '其他系列酒', '国内', '国外', '批发代理', '直销'],
